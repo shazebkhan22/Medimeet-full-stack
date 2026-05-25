@@ -6,12 +6,11 @@ node_modules/
 .env.local
 .env.*.local
 
-# Prisma generated client
-/src/generated/
-prisma/generated/
+# Build output
+dist/
+build/
 
 # Logs
-logs/
 *.log
 npm-debug.log*
 
@@ -23,13 +22,6 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Build output
-dist/
-build/
-
-# Test coverage
-coverage/
-
-# Uploads / temp files
+# Uploads / temp
 uploads/
 tmp/

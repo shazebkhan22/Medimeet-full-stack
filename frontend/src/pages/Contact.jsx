@@ -16,7 +16,7 @@ const Contact = () => {
           <p className=' text-gray-500'>+91-9026477197 <br /> Email: shazebkhan@gmail.com</p>
           <p className=' font-semibold text-lg text-gray-600'>CAREERS AT MEDIMEET</p>
           <p className=' text-gray-500'>Learn more about our teams and job openings.</p>
-          <button className='border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500'>Explore Jobs</button>
+          {/* <button className='border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500'>Explore Jobs</button> */}
         </div>
       </div>
 
