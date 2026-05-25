@@ -13,7 +13,7 @@ const loginAdmin = async (req, res) => {
         const { email, password } = req.body
 
         if (email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
-            const token = jwt.sign(email + password, process.env.JWT_SECRET)
+            const token = jwt.sign({ role: 'admin' }, process.env.JWT_SECRET)
             res.json({ success: true, token })
         } else {
             res.json({ success: false, message: "Invalid credentials" })
@@ -88,6 +88,13 @@ const addDoctor = async (req, res) => {
         const imageUpload = await cloudinary.uploader.upload(imageFile.path, { resource_type: "image" })
         const imageUrl = imageUpload.secure_url
 
+        let parsedAddress
+        try {
+            parsedAddress = typeof address === 'string' ? JSON.parse(address) : address
+        } catch {
+            return res.json({ success: false, message: 'Invalid address format' })
+        }
+
         const doctorData = {
             name,
             email,
@@ -98,7 +105,7 @@ const addDoctor = async (req, res) => {
             experience,
             about,
             fees,
-            address: JSON.parse(address),
+            address: parsedAddress,
             date: Date.now()
         }
 
